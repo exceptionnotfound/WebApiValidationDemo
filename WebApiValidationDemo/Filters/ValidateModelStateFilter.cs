@@ -18,14 +18,5 @@ namespace WebApiValidationDemo.Filters
                 actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
             }
         }
-
-        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
-        {
-            if (!actionExecutedContext.ActionContext.ModelState.IsValid)
-            {
-                actionExecutedContext.ActionContext.Response = actionExecutedContext.ActionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionExecutedContext.ActionContext.ModelState);
-            }
-            base.OnActionExecuted(actionExecutedContext);
-        }
     }
 }
