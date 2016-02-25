@@ -47,7 +47,6 @@ namespace WebApiValidationDemo.Handlers
                         // Get error messages from ModelState object
                         var modelStateValues = deserializedErrorObject.ModelState.Select(kvp => string.Join(". ", kvp.Value));
 
-                        modelStateErrors = new List<string>();
                         for (int i = 0; i < modelStateValues.Count(); i++)
                         {
                             modelStateErrors.Add(modelStateValues.ElementAt(i));
