@@ -1,0 +1,35 @@
+﻿@model WebApiValidationDemo.Mvc.Lib.Models.User
+
+@{
+    ViewBag.Title = "Add a User";
+}
+
+@Html.ActionLink("Back to Index", "Index")
+
+<h2>Add a User</h2>
+
+@using (Html.BeginForm("Add", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    <div>
+        <div>
+            @Html.LabelFor(x => x.FirstName)
+            @Html.TextBoxFor(x => x.FirstName)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.LastName)
+            @Html.TextBoxFor(x => x.LastName)
+        </div>
+        <div>
+            @Html.LabelFor(x => x.BirthDate)
+            @Html.TextBoxFor(x => x.BirthDate, new { type = "date" })
+        </div>
+        <div>
+            @Html.LabelFor(x => x.Username)
+            @Html.TextBoxFor(x => x.Username)
+        </div>
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+    </div>
+}
