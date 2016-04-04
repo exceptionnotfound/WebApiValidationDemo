@@ -10,7 +10,7 @@
 
 @using (Html.BeginForm("Add", "User", FormMethod.Post))
 {
-    @Html.ValidationSummary()
+    @Html.ValidationSummary() //This is key
     <div>
         <div>
             @Html.LabelFor(x => x.FirstName)

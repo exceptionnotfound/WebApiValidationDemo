@@ -9,24 +9,24 @@ using WebApiValidationDemo.Mvc.Lib.Models;
 
 namespace WebApiValidationDemo.Mvc.Lib.Clients
 {
-    public class UserClient : ClientBase
+public class UserClient : ClientBase
+{
+    public UserClient(ModelStateDictionary modelstate) : base(modelstate)
     {
-        public UserClient(ModelStateDictionary modelstate) : base(modelstate, Constants.ApiUrl)
-        {
-        }
-
-        public List<User> GetAll()
-        {
-            RestRequest request = new RestRequest("users/all");
-
-            return Execute<List<User>>(request);
-        }
-
-        public void Add(User user)
-        {
-            RestRequest request = new RestRequest("users/add", Method.POST);
-            request.AddJsonBody(user);
-            Execute(request);
-        }
     }
+
+    public List<User> GetAll()
+    {
+        RestRequest request = new RestRequest("users/all");
+
+        return Execute<List<User>>(request);
+    }
+
+    public void Add(User user)
+    {
+        RestRequest request = new RestRequest("users/add", Method.POST);
+        request.AddJsonBody(user);
+        Execute(request);
+    }
+}
 }

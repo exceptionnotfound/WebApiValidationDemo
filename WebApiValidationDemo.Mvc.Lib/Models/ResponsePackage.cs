@@ -5,27 +5,27 @@ using System.Web;
 
 namespace WebApiValidationDemo.Mvc.Lib.Models
 {
-    public class ResponsePackage
+public class ResponsePackage
+{
+    public List<string> Errors { get; set; }
+
+    public object Result { get; set; }
+
+    public bool HasErrors
     {
-        public List<string> Errors { get; set; }
-
-        public object Result { get; set; }
-
-        public bool HasErrors
+        get
         {
-            get
+            if (Errors != null)
             {
-                if (Errors != null)
-                {
-                    return Errors.Any();
-                }
-                return false;
+                return Errors.Any();
             }
-        }
-        public ResponsePackage(object result, List<string> errors)
-        {
-            Errors = errors;
-            Result = result;
+            return false;
         }
     }
+    public ResponsePackage(object result, List<string> errors)
+    {
+        Errors = errors;
+        Result = result;
+    }
+}
 }
